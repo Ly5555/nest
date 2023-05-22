@@ -1,8 +1,16 @@
-import { NestFactory } from '@nestjs/core';
+import {  NestFactory } from '@nestjs/core';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  const options = new DocumentBuilder()
+    .setTitle('Cats example') // 标题 
+    .setDescription('The cats API description') // 描述
+    .setVersion('1.0') // 版本号
+    .addTag('cats') //
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);// 访问文档
+  await app.listen(8888);
 }
 bootstrap();
