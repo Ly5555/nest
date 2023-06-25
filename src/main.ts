@@ -5,7 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
     .setTitle('Cats example') // 标题 
-    .setDescription('The cats API description') // 描述
+    .setDescription('自动生成') // 描述
     .setVersion('1.0') // 版本号
     .addTag('cats') //
     .build();
